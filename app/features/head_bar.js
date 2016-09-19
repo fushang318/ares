@@ -5,11 +5,20 @@ import {
     TouchableOpacity,
     Text,
     StyleSheet,
+    Platform,
 } from 'react-native'
 
 const styles = StyleSheet.create({
     head_bar: {
-      height: 55,
+      ...Platform.select({
+        android:{
+          height: 54,
+        },
+        ios:{
+          paddingTop: 10,
+          height: 64,
+        }
+      }),
       backgroundColor: '#41C4FE',
       flexDirection: 'row',
     },

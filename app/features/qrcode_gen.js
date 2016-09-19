@@ -46,8 +46,10 @@ export default class QrcodeGen extends React.Component {
             <DefaultHeadBar navigator={this.props.navigator} title="二维码生成" leftType="back" />
 
             <View style={styles.input_box}>
-              <Text>输入文字，实时生成二维码</Text>
+              <Text style={styles.label}>输入文字，实时生成二维码</Text>
               <TextInput
+                  style={styles.input}
+                  underlineColorAndroid="transparent"
                   onChangeText={(text) => this.setState({text: text})}
                   value={this.state.text}
               />            
@@ -74,6 +76,16 @@ var styles = StyleSheet.create({
   },
   input_box: {
     margin: 20,
+  },
+  label: {
+    fontSize: 20,
+    height: 30,
+  },
+  input: {
+    fontSize: 20,
+    height: 40,
+    padding: 5,
+    backgroundColor: "#eee",
   },
   qrcode_box: {
     alignItems: 'center',
