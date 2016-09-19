@@ -9,11 +9,20 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  Image,
 } from 'react-native';
 
 class ares extends Component {
   render() {
+    s1 = {
+      width: 200,
+      height: 200, 
+      marginLeft: 15,
+      marginRight: 15,
+      // backgroundColor: 'lightgreen',
+    }
+
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
@@ -26,6 +35,7 @@ class ares extends Component {
           Double tap R on your keyboard to reload,{'\n'}
           Shake or press menu button for dev menu
         </Text>
+        <Image source={require('ares/app/assets/image/travel.png')} style={s1}/>
       </View>
     );
   }
