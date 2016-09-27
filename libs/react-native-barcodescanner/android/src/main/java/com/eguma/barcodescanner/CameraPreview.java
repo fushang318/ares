@@ -37,6 +37,7 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
 
     public CameraPreview(Context context, Camera.PreviewCallback previewCallback) {
         super(context);
+        Log.i(TAG, "new");
 
         mCameraManager = new CameraManager();
         mAutoFocusHandler = new Handler();
@@ -44,11 +45,13 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
     }
 
     public void startCamera() {
+        Log.i(TAG, "startCamera");
         mCamera = mCameraManager.getCamera(mCameraType);
         startCameraPreview();
     }
 
     public void stopCamera() {
+        Log.i(TAG, "stopCamera");
         stopCameraPreview();
         mCameraManager.releaseCamera();
     }
@@ -60,6 +63,7 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
     }
 
     public void startCameraPreview() {
+        Log.i(TAG, "startCameraPreview");
         if(mCamera != null) {
             try {
                 mPreviewing = true;
@@ -82,6 +86,7 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
     }
 
     public void stopCameraPreview() {
+        Log.i(TAG, "stopCameraPreview");
         if(mCamera != null) {
             try {
                 mPreviewing = false;
@@ -171,17 +176,20 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
+        Log.i(TAG, "surfaceCreated");
         mSurfaceCreated = true;
         startCamera();
     }
 
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
+        Log.i(TAG, "surfaceDestroyed");
         stopCamera();
     }
 
     @Override
     public void surfaceChanged(SurfaceHolder holder, int format, int w, int h) {
+        Log.i(TAG, "surfaceChanged");
         if(holder.getSurface() == null) {
             return;
         }
@@ -195,10 +203,12 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
     }
 
     public void onPause() {
+        Log.i(TAG, "onPause");
         stopCameraPreview();
     }
 
     public void onResume() {
+        Log.i(TAG, "onResume");
         startCameraPreview();
     }
 

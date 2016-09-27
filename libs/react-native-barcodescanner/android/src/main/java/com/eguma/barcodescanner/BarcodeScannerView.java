@@ -28,26 +28,26 @@ public class BarcodeScannerView extends FrameLayout implements Camera.PreviewCal
 
     public BarcodeScannerView(Context context) {
         super(context);
-        Log.i(TAG, "BarcodeScannerView init start");
+        Log.i(TAG, "init start");
 
         mPreview = new CameraPreview(context, this);
         mMultiFormatReader = new MultiFormatReader();
         this.addView(mPreview);
-        Log.i(TAG, "BarcodeScannerView init end");
+        Log.i(TAG, "init end");
     }
 
     public void onResume() {
-        Log.i(TAG, "BarcodeScannerView onResume start");
+        Log.i(TAG, "onResume start");
         mPreview.startCamera(); // workaround for reload js
         // mPreview.onResume();
-        Log.i(TAG, "BarcodeScannerView onResume end");
+        Log.i(TAG, "onResume end");
     }
 
     public void onPause() {
-        Log.i(TAG, "BarcodeScannerView onPause start");
+        Log.i(TAG, "onPause start");
         mPreview.stopCamera();  // workaround for reload js
         // mPreview.onPause();
-        Log.i(TAG, "BarcodeScannerView onPause end");
+        Log.i(TAG, "onPause end");
     }
 
     public void setCameraType(String cameraType) {
@@ -59,9 +59,9 @@ public class BarcodeScannerView extends FrameLayout implements Camera.PreviewCal
     }
 
     public void stopCamera() {
-        Log.i(TAG, "BarcodeScannerView stopCamera start");
+        Log.i(TAG, "stopCamera start");
         mPreview.stopCamera();
-        Log.i(TAG, "BarcodeScannerView stopCamera end");
+        Log.i(TAG, "stopCamera end");
     }
 
     @Override

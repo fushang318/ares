@@ -9,12 +9,15 @@ import com.facebook.react.uimanager.SimpleViewManager;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.ViewGroupManager;
 import com.facebook.react.uimanager.annotations.ReactProp;
+import android.util.Log;
 
 public class BarcodeScannerManager extends ViewGroupManager<BarcodeScannerView> implements LifecycleEventListener {
     private static final String REACT_CLASS = "RNBarcodeScannerView";
 
     private static final String DEFAULT_TORCH_MODE = "off";
     private static final String DEFAULT_CAMERA_TYPE = "back";
+
+    private static final String TAG = "BarcodeScannerManager";
 
     private BarcodeScannerView mScannerView;
     private boolean mScannerViewVisible;
@@ -40,26 +43,31 @@ public class BarcodeScannerManager extends ViewGroupManager<BarcodeScannerView> 
 
     @Override
     public BarcodeScannerView createViewInstance(ThemedReactContext context) {
+        Log.i(TAG, "createViewInstance start");
         context.addLifecycleEventListener(this);
         mScannerView = new BarcodeScannerView(context);
         mScannerView.setCameraType(DEFAULT_CAMERA_TYPE);
         mScannerView.setFlash(DEFAULT_TORCH_MODE.equals("on"));
         mScannerViewVisible = true;
+        Log.i(TAG, "createViewInstance end");
         return mScannerView;
     }
 
     @Override
     public void onHostResume() {
+        Log.i(TAG, "onHostResume");
         mScannerView.onResume();
     }
 
     @Override
     public void onHostPause() {
+        Log.i(TAG, "onHostPause");
         mScannerView.onPause();
     }
 
     @Override
     public void onHostDestroy() {
+        Log.i(TAG, "onHostDestroy");
         mScannerView.stopCamera();
     }
 

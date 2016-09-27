@@ -2,16 +2,21 @@ package com.eguma.barcodescanner;
 
 import android.hardware.Camera;
 import java.util.List;
+import android.util.Log;
 
 public class CameraManager {
+    private static final String TAG = "CameraManager";
+
     private int mCameraId = -1;
     private Camera mCamera;
 
     public CameraManager() {
+        Log.i(TAG, "CameraManager");
         mCamera = getCameraInstance();
     }
 
     public Camera getCamera() {
+        Log.i(TAG, "getCamera");
         if (mCamera == null) {
             mCamera = getCameraInstance();
         }
@@ -20,6 +25,7 @@ public class CameraManager {
     }
 
     public Camera getCamera(String cameraType) {
+        Log.i(TAG, "getCamera cameraType " + cameraType);
         if (mCamera == null) {
             mCamera = getCameraInstance(cameraType);
         }
@@ -28,6 +34,7 @@ public class CameraManager {
     }
 
     public void releaseCamera() {
+        Log.i(TAG, "releaseCamera");
         if (mCamera != null) {
             mCamera.release(); // release the camera for other applications
             mCamera = null;
@@ -35,10 +42,12 @@ public class CameraManager {
     }
 
     public Camera getCameraInstance() {
+        Log.i(TAG, "getCameraInstance");
         return getCameraInstance(-1);
     }
 
     public Camera getCameraInstance(String cameraType) {
+        Log.i(TAG, "getCameraInstance cameraType " + cameraType);
         mCameraId = -1;
 
         Camera.CameraInfo cameraInfo = new Camera.CameraInfo();
@@ -60,6 +69,7 @@ public class CameraManager {
 
     // A safe way to get an instance of the Camera object.
     public Camera getCameraInstance(int cameraId) {
+        Log.i(TAG, "getCameraInstance cameraId " + cameraId);
         Camera c = null;
         try {
             if(cameraId == -1) {
