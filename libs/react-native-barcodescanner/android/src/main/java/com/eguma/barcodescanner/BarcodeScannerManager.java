@@ -56,13 +56,17 @@ public class BarcodeScannerManager extends ViewGroupManager<BarcodeScannerView> 
     @Override
     public void onHostResume() {
         Log.i(TAG, "onHostResume");
-        mScannerView.onResume();
+        if(mScannerView.isShow()){
+            mScannerView.onResume();
+        }
     }
 
     @Override
     public void onHostPause() {
         Log.i(TAG, "onHostPause");
-        mScannerView.onPause();
+        if(mScannerView.isShow()){
+            mScannerView.onPause();
+        }
     }
 
     @Override

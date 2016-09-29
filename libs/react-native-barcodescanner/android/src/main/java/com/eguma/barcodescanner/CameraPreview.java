@@ -44,6 +44,16 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
         mPreviewCallback = previewCallback;
     }
 
+    protected void onAttachedToWindow () {
+        super.onAttachedToWindow();
+        Log.i(TAG, "onAttachedToWindow");
+    }
+
+    protected void onDetachedFromWindow () {
+        super.onDetachedFromWindow();
+        Log.i(TAG, "onDetachedFromWindow");
+    }
+
     public void startCamera() {
         Log.i(TAG, "startCamera");
         mCamera = mCameraManager.getCamera(mCameraType);

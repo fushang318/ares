@@ -23,6 +23,7 @@ import com.google.zxing.common.HybridBinarizer;
 public class BarcodeScannerView extends FrameLayout implements Camera.PreviewCallback {
     private CameraPreview mPreview;
     private MultiFormatReader mMultiFormatReader;
+    private boolean show = false;
 
     private static final String TAG = "BarcodeScannerView";
 
@@ -34,6 +35,22 @@ public class BarcodeScannerView extends FrameLayout implements Camera.PreviewCal
         mMultiFormatReader = new MultiFormatReader();
         this.addView(mPreview);
         Log.i(TAG, "init end");
+    }
+
+    protected void onAttachedToWindow () {
+        super.onAttachedToWindow();
+        this.show = true;
+        Log.i(TAG, "onAttachedToWindow");
+    }
+
+    protected void onDetachedFromWindow () {
+        super.onDetachedFromWindow();
+        this.show = false;
+        Log.i(TAG, "onDetachedFromWindow");
+    }
+
+    public boolean isShow() {
+        return this.show;
     }
 
     public void onResume() {
