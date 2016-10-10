@@ -5,7 +5,9 @@ import {
     View,
 } from 'react-native'
 
-import Button from 'ares/app/components/Button'
+// import Button from 'ares/app/components/Button'
+import Button from 'antd-mobile/lib/button';
+
 
 import {DefaultHeadBar} from 'ares/app/features/head_bar'
 
@@ -19,15 +21,13 @@ export default class Features extends React.Component {
       <View>
         <DefaultHeadBar navigator={this.props.navigator} title="非业务功能列表"/>
         <Button
-          text="二维码生成"
-          onPress={()=> this.props.navigator.push({id: "qrcode_gen", params: []})}
-          />
-        <Button
-          text="二维码扫描(未实现)"
-          />
-        <Button
-          text="分享(未实现)"
-          />
+          type="primary"
+          onClick={()=> this.props.navigator.push({id: "qrcode_gen", params: []})}
+        >
+        二维码生成
+        </Button>
+        <Button type="primary">二维码扫描(未实现)</Button>
+        <Button type="primary">分享(未实现)</Button>
       </View>
     )
   }
