@@ -4,8 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "//": "卸载命令 npm unlink react-native-barcodescanner",
-    "install": "npm link libs/react-native-barcodescanner"
+    "install": "node link.js"
   },
   "dependencies": {
     "react": "15.3.2",
